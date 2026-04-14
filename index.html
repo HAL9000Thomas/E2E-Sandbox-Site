@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EggShop – Login</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; background: #fdf6ec; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .card { background: #fff; border: 1px solid #e5d9c8; border-radius: 12px; padding: 2rem; width: 100%; max-width: 380px; }
+    .logo { text-align: center; margin-bottom: 1.5rem; }
+    .logo h1 { font-size: 1.8rem; color: #b45309; }
+    .logo p { font-size: 0.9rem; color: #888; margin-top: 4px; }
+    label { display: block; font-size: 0.85rem; color: #555; margin-bottom: 4px; margin-top: 1rem; }
+    input { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid #ddd; border-radius: 8px; font-size: 0.95rem; }
+    input:focus { outline: none; border-color: #b45309; }
+    .btn { margin-top: 1.5rem; width: 100%; padding: 0.7rem; background: #b45309; color: #fff; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; }
+    .btn:hover { background: #92400e; }
+    .error { color: #dc2626; font-size: 0.85rem; margin-top: 0.75rem; min-height: 1.2rem; }
+    .links { margin-top: 1.25rem; text-align: center; font-size: 0.85rem; color: #888; }
+    .links a { color: #b45309; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+    .hint { font-size: 0.75rem; color: #aaa; text-align: center; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <h1>🥚 EggShop</h1>
+      <p>Fresh eggs delivered to your door</p>
+    </div>
+
+    <label for="username">Username</label>
+    <input id="username" type="text" placeholder="e.g. admin" />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="e.g. password" />
+
+    <p class="error" id="error"></p>
+
+    <button class="btn" id="login-btn">Log in</button>
+
+    <p class="hint">Hint: admin / password</p>
+
+    <div class="links">
+      <a href="contact.html">Contact us</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('login-btn').onclick = () => {
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value;
+      if (user === 'admin' && pass === 'password') {
+        localStorage.setItem('eggshop_user', user);
+        window.location.href = 'dashboard.html';
+      } else {
+        document.getElementById('error').textContent = 'Invalid username or password.';
+      }
+    };
+  </script>
+</body>
+</html>
